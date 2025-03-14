@@ -2,7 +2,7 @@ import os
 
 from decouple import config
 from fastapi import FastAPI
-from fastapi_key_auth import AuthorizerMiddleware
+#from fastapi_key_auth import AuthorizerMiddleware
 from langchain_groq import ChatGroq
 from langserve import add_routes
 from chain import get_refactor_chain
@@ -19,11 +19,11 @@ app = FastAPI(
   description='API for AI using Llama-3.3 70b'
 )
 
-app.add_middleware(
-  middleware_class=AuthorizerMiddleware,
-  public_paths=('/docs','/redoc','/openapi.json'),
-  key_pattern ='X_API_KEY',
-)
+# app.add_middleware(
+#   middleware_class=AuthorizerMiddleware,
+#   public_paths=('/docs','/redoc','/openapi.json'),
+#   key_pattern ='X_API_KEY',
+# )
 
 add_routes(
   app,
